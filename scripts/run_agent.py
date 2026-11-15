@@ -1,7 +1,8 @@
 """在评测集上批量运行 Agent，结果写入 reports/runs/<run_name>/。
 
 用法：
-  python scripts/run_agent.py --prompt v1                 # 全量
+  python scripts/run_agent.py --prompt v1                 # 基础集全量
+  python scripts/run_agent.py --prompt v1 --split hard    # 难例集全量
   python scripts/run_agent.py --prompt v1 --limit 5       # 试跑前 5 条
   python scripts/run_agent.py --ids m001,a013 --attempts 3
   python scripts/run_agent.py --prompt v1 --model deepseek-v4-pro --name v1-pro
@@ -36,6 +37,7 @@ def git_commit() -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--prompt", default="v1")
+    ap.add_argument("--split", default="base", choices=["base", "hard"], help="评测集：base 基础集 / hard 难例集")
     ap.add_argument("--model")
     ap.add_argument("--ids", help="逗号分隔的样本 id")
     ap.add_argument("--limit", type=int)
@@ -46,14 +48,14 @@ def main() -> int:
 
     cfg = load_config()
     agent = CommentAgent(LLMClient(cfg), cfg, prompt_version=args.prompt, model=args.model)
-    samples = [{k: v for k, v in r.items() if k != "_where"} for r in load_rows()]
+    samples = [{k: v for k, v in r.items() if k != "_where"} for r in load_rows(args.split)]
     if args.ids:
         wanted = set(args.ids.split(","))
         samples = [s for s in samples if s["id"] in wanted]
     if args.limit:
         samples = samples[: args.limit]
 
-    name = args.name or f"{args.prompt}-{agent.model}"
+    name = args.name or f"{args.split}-{args.prompt}-{agent.model}"
     out_dir = ROOT / "reports" / "runs" / name
     out_dir.mkdir(parents=True, exist_ok=True)
     jobs = [(s, a) for s in samples for a in range(args.attempts)]
@@ -79,6 +81,7 @@ def main() -> int:
         "name": name,
         "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "git_commit": git_commit(),
+        "split": args.split,
         "prompt_version": args.prompt,
         "prompt_sha256": hashlib.sha256(load_prompt(args.prompt).encode()).hexdigest()[:12],
         "model": agent.model,

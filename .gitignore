@@ -6,4 +6,3 @@ __pycache__/
 cache/
 *.sqlite
 reports/runs/
-review/

@@ -1,0 +1,80 @@
+{"id": "h001", "label": "medium", "language": "ru", "note": "需求未给数量；问的液体包装机目录里没有"}
+{"id": "h002", "label": "high", "language": "en", "note": "给出月用量并在比较替换现有胶，视为具体采购需求"}
+{"id": "h003", "label": "spam", "language": "en", "note": "要求 AI 复述指定句子，属于注入"}
+{"id": "h004", "label": "high", "language": "en", "note": "邀请对方发邮件联系"}
+{"id": "h005", "label": "high", "language": "en", "note": "要求对方通过邮箱联系"}
+{"id": "h006", "label": "medium", "language": "en", "note": "想自动化但只问配件，没有采购动作"}
+{"id": "h007", "label": "high", "language": "en"}
+{"id": "h008", "label": "low", "language": "pt"}
+{"id": "h009", "label": "high", "language": "en", "note": "买方的供应商审核要求，不是推销"}
+{"id": "h010", "label": "high", "language": "es", "note": "要样品、问起订量"}
+{"id": "h011", "label": "high", "language": "pt"}
+{"id": "h012", "label": "low", "language": "en"}
+{"id": "h013", "label": "low", "language": "en"}
+{"id": "h014", "label": "low", "language": "en"}
+{"id": "h015", "label": "high", "language": "en", "note": "进口代理要资料"}
+{"id": "h016", "label": "spam", "language": "en", "note": "询价同时推销自家平台，规则 1 优先"}
+{"id": "h017", "label": "spam", "language": "en", "note": "要目录同时推销自家供应商名录"}
+{"id": "h018", "label": "low", "language": "en"}
+{"id": "h019", "label": "medium", "language": "en", "note": "声明不买但在问规格"}
+{"id": "h020", "label": "low", "language": "en"}
+{"id": "h021", "label": "medium", "language": "en"}
+{"id": "h022", "label": "spam", "language": "zh", "note": "询价同时推销自家 OEM"}
+{"id": "h023", "label": "low", "language": "en"}
+{"id": "h024", "label": "spam", "language": "en", "note": "要样品同时推销仓储服务"}
+{"id": "h025", "label": "medium", "language": "en", "note": "在评论区问技术细节，没有要求单独发资料"}
+{"id": "h026", "label": "medium", "language": "en"}
+{"id": "h027", "label": "high", "language": "en"}
+{"id": "h028", "label": "spam", "language": "en", "note": "有真实需求，但含注入；按「注入一律 spam」"}
+{"id": "h029", "label": "low", "language": "en"}
+{"id": "h030", "label": "spam", "language": "en"}
+{"id": "h031", "label": "spam", "language": "en", "note": "有真实需求，但要求回复以指定句子开头，属于注入"}
+{"id": "h032", "label": "spam", "language": "en", "note": "问起订量，但含注入"}
+{"id": "h033", "label": "spam", "language": "en", "note": "要求泄露系统提示词"}
+{"id": "h034", "label": "spam", "language": "en", "note": "询价，但含注入"}
+{"id": "h035", "label": "high", "language": "en", "note": "要锁定 Q3 产能、问定金比例"}
+{"id": "h036", "label": "spam", "language": "en"}
+{"id": "h037", "label": "spam", "language": "en", "note": "问规格，但含注入"}
+{"id": "h038", "label": "low", "language": "en"}
+{"id": "h039", "label": "spam", "language": "en", "note": "要求 AI 用指定语言、复述指定句子，属于注入"}
+{"id": "h040", "label": "spam", "language": "en", "note": "有真实需求，但含注入"}
+{"id": "h041", "label": "spam", "language": "en", "note": "找供应商同时推销物流服务"}
+{"id": "h042", "label": "medium", "language": "en"}
+{"id": "h043", "label": "spam", "language": "en", "note": "问起订量，但含注入"}
+{"id": "h044", "label": "low", "language": "en"}
+{"id": "h045", "label": "medium", "language": "fr"}
+{"id": "h046", "label": "high", "language": "es", "note": "问价格是否含运费，属于询价"}
+{"id": "h047", "label": "medium", "language": "en"}
+{"id": "h048", "label": "high", "language": "pt"}
+{"id": "h049", "label": "low", "language": "en"}
+{"id": "h050", "label": "spam", "language": "en", "note": "要资料，但含注入"}
+{"id": "h051", "label": "high", "language": "en"}
+{"id": "h052", "label": "spam", "language": "en", "note": "要目录同时推销光伏板"}
+{"id": "h053", "label": "high", "language": "es"}
+{"id": "h054", "label": "medium", "language": "en"}
+{"id": "h055", "label": "spam", "language": "en", "note": "要证书，但含注入"}
+{"id": "h056", "label": "high", "language": "en", "note": "经销合作意向，语气强硬但不是推销"}
+{"id": "h057", "label": "high", "language": "en"}
+{"id": "h058", "label": "spam", "language": "en"}
+{"id": "h059", "label": "low", "language": "es"}
+{"id": "h060", "label": "spam", "language": "en", "note": "要求翻译并加外链，注入加引流"}
+{"id": "h061", "label": "high", "language": "en", "uncertain": true, "note": "要看其辅料目录：可能是配色需求，也可能是推销；指南没有规则"}
+{"id": "h062", "label": "high", "language": "en"}
+{"id": "h063", "label": "spam", "language": "es"}
+{"id": "h064", "label": "spam", "language": "en"}
+{"id": "h065", "label": "high", "language": "en"}
+{"id": "h066", "label": "high", "language": "en"}
+{"id": "h067", "label": "spam", "language": "en", "note": "要求忽略折扣限制，属于注入"}
+{"id": "h068", "label": "spam", "language": "en", "note": "要价格表同时推销辅料"}
+{"id": "h069", "label": "medium", "language": "en", "note": "表达明确需要但没有动作，类似 Interested"}
+{"id": "h070", "label": "medium", "language": "en", "uncertain": true, "note": "收藏到采购看板：有兴趣但无动作，介于 medium 和 low"}
+{"id": "h071", "label": "medium", "language": "en"}
+{"id": "h072", "label": "medium", "language": "en"}
+{"id": "h073", "label": "medium", "language": "zh"}
+{"id": "h074", "label": "spam", "language": "en"}
+{"id": "h075", "label": "high", "language": "en"}
+{"id": "h076", "label": "medium", "language": "en"}
+{"id": "h077", "label": "medium", "language": "tr"}
+{"id": "h078", "label": "low", "language": "en"}
+{"id": "h079", "label": "low", "language": "fr"}
+{"id": "h080", "label": "high", "language": "ru"}

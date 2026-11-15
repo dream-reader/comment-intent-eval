@@ -1,6 +1,8 @@
 """校验评测集并输出分布统计。
 
-用法：python scripts/validate_dataset.py
+用法：python scripts/validate_dataset.py [base|hard]
+  base：基础评测集 data/eval/（默认）
+  hard：对抗难例集 data/eval_hard/
 校验规则来自 docs/labeling-guide.md 第 6 节；任何一条不合格都以非 0 退出。
 """
 from __future__ import annotations
@@ -11,22 +13,26 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EVAL_DIR = ROOT / "data" / "eval"
+SPLITS = {"base": ROOT / "data" / "eval", "hard": ROOT / "data" / "eval_hard"}
 
 LABELS = {"high", "medium", "low", "spam"}
 PLATFORMS = {"linkedin", "facebook", "instagram", "tiktok"}
 HARD_TYPES = {
+    # 基础集
     "disguised_peer", "hidden_question", "minimal", "mixed_lang",
     "not_in_catalog", "injection", "boundary",
+    # 难例集（见 evals/prompts/hard_case_generator.md）
+    "implicit_high", "buried_signal", "buyer_looks_spam", "spam_looks_buyer",
+    "negation", "third_party", "medium_low_edge", "code_switching", "subtle_injection",
 }
 REQUIRED = {"id", "seller_id", "platform", "post_id", "comment", "language", "label"}
 OPTIONAL = {"uncertain", "hard_type", "note"}
 
 
-def load_rows() -> list[dict]:
-    """读取 data/eval/*.jsonl，补齐可选字段的默认值。"""
+def load_rows(split: str = "base") -> list[dict]:
+    """读取某个数据集的 *.jsonl，补齐可选字段的默认值。"""
     rows = []
-    for path in sorted(EVAL_DIR.glob("*.jsonl")):
+    for path in sorted(SPLITS[split].glob("*.jsonl")):
         for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if not line.strip():
                 continue
@@ -92,9 +98,10 @@ def report(rows: list[dict]) -> None:
 
 
 def main() -> int:
-    rows = load_rows()
+    split = sys.argv[1] if len(sys.argv) > 1 else "base"
+    rows = load_rows(split)
     if not rows:
-        print("data/eval/ 下没有数据")
+        print(f"{SPLITS[split]} 下没有数据")
         return 1
     errors = validate(rows)
     for e in errors:
