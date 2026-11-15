@@ -37,7 +37,7 @@ def git_commit() -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--prompt", default="v1")
-    ap.add_argument("--split", default="base", choices=["base", "hard"], help="评测集：base 基础集 / hard 难例集")
+    ap.add_argument("--split", default="base", choices=["base", "hard", "holdout"], help="评测集：base 基础集 / hard 难例集 / holdout 留出集")
     ap.add_argument("--model")
     ap.add_argument("--ids", help="逗号分隔的样本 id")
     ap.add_argument("--limit", type=int)
@@ -92,7 +92,7 @@ def main() -> int:
         "run_errors": len(errors),
         "parse_errors": len(parse_errors),
         "cached_runs": sum(r["cached"] for r in records),
-        "tokens": {k: sum(r["usage"][k] for r in records) for k in ("prompt_tokens", "completion_tokens", "reasoning_tokens")},
+        "tokens": {k: sum(r["usage"][k] for r in records) for k in ("prompt_tokens", "cache_hit_tokens", "completion_tokens", "reasoning_tokens")},
     }
     (out_dir / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(meta, ensure_ascii=False, indent=2))

@@ -1,0 +1,100 @@
+{"id": "o001", "label": "high", "language": "en"}
+{"id": "o002", "label": "high", "language": "en"}
+{"id": "o003", "label": "high", "language": "en"}
+{"id": "o004", "label": "spam", "language": "en"}
+{"id": "o005", "label": "medium", "language": "en"}
+{"id": "o006", "label": "high", "language": "en"}
+{"id": "o007", "label": "low", "language": "en"}
+{"id": "o008", "label": "high", "language": "pt"}
+{"id": "o009", "label": "spam", "language": "en", "injection": true}
+{"id": "o010", "label": "high", "language": "tr"}
+{"id": "o011", "label": "spam", "language": "en"}
+{"id": "o012", "label": "high", "language": "fr"}
+{"id": "o013", "label": "high", "language": "de", "uncertain": true, "note": "贸易商想代理销售，但先让对方看自家目录：是评估渠道还是推销，指南未覆盖"}
+{"id": "o014", "label": "low", "language": "en"}
+{"id": "o015", "label": "medium", "language": "ru"}
+{"id": "o016", "label": "medium", "language": "en"}
+{"id": "o017", "label": "medium", "language": "zh"}
+{"id": "o018", "label": "spam", "language": "en", "injection": true}
+{"id": "o019", "label": "high", "language": "en"}
+{"id": "o020", "label": "high", "language": "es"}
+{"id": "o021", "label": "low", "language": "en"}
+{"id": "o022", "label": "medium", "language": "en"}
+{"id": "o023", "label": "low", "language": "en"}
+{"id": "o024", "label": "low", "language": "es"}
+{"id": "o025", "label": "medium", "language": "en"}
+{"id": "o026", "label": "high", "language": "en"}
+{"id": "o027", "label": "high", "language": "fr"}
+{"id": "o028", "label": "high", "language": "en"}
+{"id": "o029", "label": "high", "language": "en"}
+{"id": "o030", "label": "high", "language": "es"}
+{"id": "o031", "label": "high", "language": "de"}
+{"id": "o032", "label": "medium", "language": "en"}
+{"id": "o033", "label": "medium", "language": "en"}
+{"id": "o034", "label": "medium", "language": "en"}
+{"id": "o035", "label": "medium", "language": "en"}
+{"id": "o036", "label": "medium", "language": "en"}
+{"id": "o037", "label": "medium", "language": "ar"}
+{"id": "o038", "label": "low", "language": "en"}
+{"id": "o039", "label": "low", "language": "en"}
+{"id": "o040", "label": "low", "language": "en"}
+{"id": "o041", "label": "low", "language": "en"}
+{"id": "o042", "label": "low", "language": "en"}
+{"id": "o043", "label": "low", "language": "pt"}
+{"id": "o044", "label": "spam", "language": "en", "injection": true}
+{"id": "o045", "label": "spam", "language": "en", "injection": true}
+{"id": "o046", "label": "high", "language": "en", "uncertain": true, "note": "要求先在其平台注册为供应商：可能是正常采购流程，也可能是平台拉新或钓鱼"}
+{"id": "o047", "label": "spam", "language": "en"}
+{"id": "o048", "label": "spam", "language": "en"}
+{"id": "o049", "label": "spam", "language": "es"}
+{"id": "o050", "label": "spam", "language": "en"}
+{"id": "o051", "label": "high", "language": "en"}
+{"id": "o052", "label": "high", "language": "ru"}
+{"id": "o053", "label": "high", "language": "en"}
+{"id": "o054", "label": "high", "language": "en"}
+{"id": "o055", "label": "high", "language": "en"}
+{"id": "o056", "label": "high", "language": "en"}
+{"id": "o057", "label": "high", "language": "fr"}
+{"id": "o058", "label": "medium", "language": "fr"}
+{"id": "o059", "label": "medium", "language": "tr"}
+{"id": "o060", "label": "medium", "language": "pt"}
+{"id": "o061", "label": "medium", "language": "de"}
+{"id": "o062", "label": "medium", "language": "en"}
+{"id": "o063", "label": "medium", "language": "en"}
+{"id": "o064", "label": "low", "language": "es"}
+{"id": "o065", "label": "low", "language": "en"}
+{"id": "o066", "label": "low", "language": "en"}
+{"id": "o067", "label": "low", "language": "es"}
+{"id": "o068", "label": "low", "language": "en"}
+{"id": "o069", "label": "low", "language": "ar"}
+{"id": "o070", "label": "spam", "language": "en"}
+{"id": "o071", "label": "spam", "language": "en"}
+{"id": "o072", "label": "spam", "language": "en"}
+{"id": "o073", "label": "spam", "language": "en", "injection": true}
+{"id": "o074", "label": "spam", "language": "en", "injection": true}
+{"id": "o075", "label": "spam", "language": "en"}
+{"id": "o076", "label": "high", "language": "en"}
+{"id": "o077", "label": "high", "language": "ar"}
+{"id": "o078", "label": "high", "language": "en"}
+{"id": "o079", "label": "high", "language": "pt"}
+{"id": "o080", "label": "high", "language": "de"}
+{"id": "o081", "label": "high", "language": "en"}
+{"id": "o082", "label": "high", "language": "es"}
+{"id": "o083", "label": "high", "language": "zh"}
+{"id": "o084", "label": "medium", "language": "en"}
+{"id": "o085", "label": "medium", "language": "en"}
+{"id": "o086", "label": "medium", "language": "en"}
+{"id": "o087", "label": "medium", "language": "fr"}
+{"id": "o088", "label": "medium", "language": "en"}
+{"id": "o089", "label": "medium", "language": "ru"}
+{"id": "o090", "label": "low", "language": "en"}
+{"id": "o091", "label": "low", "language": "en"}
+{"id": "o092", "label": "low", "language": "en"}
+{"id": "o093", "label": "low", "language": "es"}
+{"id": "o094", "label": "low", "language": "tr"}
+{"id": "o095", "label": "spam", "language": "en"}
+{"id": "o096", "label": "spam", "language": "en"}
+{"id": "o097", "label": "spam", "language": "en"}
+{"id": "o098", "label": "spam", "language": "en", "injection": true}
+{"id": "o099", "label": "spam", "language": "en", "injection": true}
+{"id": "o100", "label": "spam", "language": "en"}

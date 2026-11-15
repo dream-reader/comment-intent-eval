@@ -43,7 +43,7 @@ class AgentResult:
     parse_error: str | None = None
     tool_calls: list[dict] = field(default_factory=list)
     turns: int = 0
-    usage: dict = field(default_factory=lambda: {"prompt_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0})
+    usage: dict = field(default_factory=lambda: {"prompt_tokens": 0, "cache_hit_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0})
     latency_s: float = 0.0
     cached: bool = False
     error: str | None = None
@@ -127,6 +127,7 @@ class CommentAgent:
     @staticmethod
     def _add_usage(res: AgentResult, usage: dict) -> None:
         res.usage["prompt_tokens"] += usage.get("prompt_tokens", 0)
+        res.usage["cache_hit_tokens"] += usage.get("prompt_cache_hit_tokens", 0) or 0
         res.usage["completion_tokens"] += usage.get("completion_tokens", 0)
         details = usage.get("completion_tokens_details") or {}
         res.usage["reasoning_tokens"] += details.get("reasoning_tokens", 0) or 0

@@ -13,3 +13,8 @@ judge:
   model: deepseek-v4-pro
   max_tokens: 8000
   temperature: 0.0
+
+# 价格（元 / 百万 token，空闲时段；工作日 9-12、14-18 为高峰，价格翻倍）。2026-11-15 查自官方价格页
+pricing:
+  deepseek-flash:  {input_cache_hit: 0.02, input_cache_miss: 1.0, output: 4.0}
+  deepseek-v4-pro: {input_cache_hit: 0.15, input_cache_miss: 4.5, output: 13.5}

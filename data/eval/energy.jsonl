@@ -45,6 +45,6 @@
 {"id": "e045", "seller_id": "energy", "platform": "linkedin", "post_id": "ene-1", "comment": "Is the VM-W51 stackable to 15kWh?", "language": "en", "label": "medium", "hard_type": "not_in_catalog", "note": "目录没有并联扩容信息"}
 {"id": "e046", "seller_id": "energy", "platform": "instagram", "post_id": "ene-2", "comment": "😍", "language": "und", "label": "low", "hard_type": "minimal"}
 {"id": "e047", "seller_id": "energy", "platform": "linkedin", "post_id": "ene-1", "comment": "Ciao, siete presenti in Italia? Cerchiamo batterie per 30 impianti residenziali.", "language": "it", "label": "high"}
-{"id": "e048", "seller_id": "energy", "platform": "facebook", "post_id": "ene-1", "comment": "Ile kosztuje wysyłka do Polski?", "language": "pl", "label": "medium", "hard_type": "boundary", "note": "只问运费，没有数量"}
+{"id": "e048", "seller_id": "energy", "platform": "facebook", "post_id": "ene-1", "comment": "Ile kosztuje wysyłka do Polski?", "language": "pl", "label": "high", "hard_type": "boundary", "note": "问运费也是在问价格，属于询价。原标 medium，与后来补充的「价格条款算询价」规则冲突，11-15 统一口径改为 high（发现于 v2 回归对比）"}
 {"id": "e049", "seller_id": "energy", "platform": "linkedin", "post_id": "ene-1", "comment": "We provide SEO and Google Ads for solar companies, guaranteed first page. DM.", "language": "en", "label": "spam"}
 {"id": "e050", "seller_id": "energy", "platform": "facebook", "post_id": "ene-2", "comment": "Does it come with a warranty card in Spanish?", "language": "en", "label": "medium"}

@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import yaml  # noqa: E402
 
 from evals.contract import CHECK_NAMES, CHECKS, check_output  # noqa: E402
+from evals.cost import record_cost  # noqa: E402
 from evals.metrics import LABELS, classification, grouped_accuracy, predicted_label  # noqa: E402
 from validate_dataset import load_rows  # noqa: E402
 
@@ -33,8 +34,14 @@ def evaluate(run: str) -> dict:
     meta = json.loads((run_dir / "meta.json").read_text(encoding="utf-8"))
     split = meta.get("split", "base")
     gold = {r["id"]: r for r in load_rows(split)}
-    records = [json.loads(l) for l in (run_dir / "outputs.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
-    records = [r for r in records if r.get("attempt", 0) == 0]  # 多次运行时只取第一次；稳定性另算
+    all_records = [json.loads(l) for l in (run_dir / "outputs.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    records = [r for r in all_records if r.get("attempt", 0) == 0]  # 多次运行时指标只取第一次；稳定性另算
+
+    by_id = defaultdict(list)
+    for r in all_records:
+        by_id[r["id"]].append(predicted_label(r))
+    unstable = sorted((i, labels) for i, labels in by_id.items() if len(set(labels)) > 1)
+    attempts = max(len(v) for v in by_id.values())
 
     contract = defaultdict(lambda: {"applicable": 0, "passed": 0, "fails": []})
     sample_fail = 0
@@ -61,7 +68,9 @@ def evaluate(run: str) -> dict:
 
     lat = [r["latency_s"] for r in records if not r.get("cached")]
     return {"meta": meta, "split": split, "records": records, "contract": contract, "sample_fail": sample_fail,
-            "cls": classification(pairs), "rows": rows, "wrong": wrong, "latency": lat}
+            "cls": classification(pairs), "rows": rows, "wrong": wrong, "latency": lat,
+            "attempts": attempts, "unstable": unstable, "n_ids": len(by_id),
+            "cost": sum(record_cost(r, meta["model"]) for r in all_records), "n_all": len(all_records)}
 
 
 def render(ev: dict) -> str:
@@ -107,8 +116,17 @@ def render(ev: dict) -> str:
         text = s["comment"].replace("|", "/").replace("\n", " ")
         out.append(f"| `{s['id']}` | `{s['label']}` | `{pred}` | {s['hard_type'] or ''} | {text[:70]}{'…' if len(text) > 70 else ''} |")
 
+    if ev["attempts"] > 1:
+        n_un = len(ev["unstable"])
+        out += ["", "## 5. 稳定性", "",
+                f"每条样本运行 {ev['attempts']} 次（温度 {m['agent_config']['temperature']}），"
+                f"**{ev['n_ids'] - n_un} / {ev['n_ids']} 条（{pct(1 - n_un / ev['n_ids'])}）每次判断一致**。", ""]
+        if n_un:
+            out += ["结果不一致的样本：", ""] + [f"- `{i}`：{' / '.join(ls)}" for i, ls in ev["unstable"]]
+
     tok = m.get("tokens", {})
-    out += ["", "## 5. 成本与耗时", "",
+    out += ["", "## 6. 成本与耗时", "",
+            f"- 花费（按空闲时段价格折算）：**¥{ev['cost']:.2f}**，共 {ev['n_all']} 次运行，平均每条 ¥{ev['cost'] / ev['n_all']:.4f}",
             f"- token：输入 {tok.get('prompt_tokens', 0):,}，输出 {tok.get('completion_tokens', 0):,}（其中推理 {tok.get('reasoning_tokens', 0):,}）；"
             f"平均每条输入 {tok.get('prompt_tokens', 0) // max(n_rec, 1):,}、输出 {tok.get('completion_tokens', 0) // max(n_rec, 1):,}"]
     lat = ev["latency"]

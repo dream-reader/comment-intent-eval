@@ -1,8 +1,9 @@
 """校验评测集并输出分布统计。
 
-用法：python scripts/validate_dataset.py [base|hard]
+用法：python scripts/validate_dataset.py [base|hard|holdout]
   base：基础评测集 data/eval/（默认）
   hard：对抗难例集 data/eval_hard/
+  holdout：留出集 data/eval_holdout/（提示词改版时没看过）
 校验规则来自 docs/labeling-guide.md 第 6 节；任何一条不合格都以非 0 退出。
 """
 from __future__ import annotations
@@ -13,7 +14,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SPLITS = {"base": ROOT / "data" / "eval", "hard": ROOT / "data" / "eval_hard"}
+SPLITS = {"base": ROOT / "data" / "eval", "hard": ROOT / "data" / "eval_hard", "holdout": ROOT / "data" / "eval_holdout"}
 
 LABELS = {"high", "medium", "low", "spam"}
 PLATFORMS = {"linkedin", "facebook", "instagram", "tiktok"}

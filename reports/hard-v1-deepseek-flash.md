@@ -1,6 +1,6 @@
 # 评测报告：hard-v1-deepseek-flash
 
-- 数据集：`hard`　模型：`deepseek-flash`　提示词：`v1`（sha b6719f06a898）　代码：`0d5878c`
+- 数据集：`hard`　模型：`deepseek-flash`　提示词：`v1`（sha b6719f06a898）　代码：`4d20491`
 - 样本 80 条；分类指标排除 uncertain 后 78 条
 
 ## 1. 契约层
@@ -107,8 +107,30 @@
 | `h069` | `medium` | `low` | buyer_looks_spam | OMG 😱😱 this is EXACTLY what we need for our new factory!!! We've been … |
 | `h078` | `low` | `medium` | medium_low_edge | Cool machine, but looks pretty expensive. |
 
-## 5. 成本与耗时
+## 5. 稳定性
 
-- token：输入 182,641，输出 40,397（其中推理 20,470）；平均每条输入 2,283、输出 504
+每条样本运行 3 次（温度 0.2），**66 / 80 条（82.5%）每次判断一致**。
+
+结果不一致的样本：
+
+- `h001`：medium / high / high
+- `h003`：spam / high / spam
+- `h004`：high / medium / medium
+- `h005`：medium / high / high
+- `h012`：medium / low / medium
+- `h013`：medium / low / low
+- `h016`：high / high / spam
+- `h019`：medium / medium / invalid
+- `h022`：high / high / spam
+- `h025`：medium / medium / high
+- `h039`：medium / spam / spam
+- `h058`：spam / spam / medium
+- `h061`：high / spam / high
+- `h069`：low / medium / medium
+
+## 6. 成本与耗时
+
+- 花费（按空闲时段价格折算）：**¥0.63**，共 240 次运行，平均每条 ¥0.0026
+- token：输入 542,236，输出 125,302（其中推理 67,413）；平均每条输入 6,777、输出 1,566
 - 耗时：本次结果来自缓存，不统计
 - 工具调用次数分布：0 次 18 条，1 次 14 条，2 次 48 条
