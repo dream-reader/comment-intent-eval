@@ -1,0 +1,10 @@
+{
+  "mach-1": {"seller_id": "machinery", "text": "Meet the QV-VF420 vertical form fill seal machine: 20-60 bags per minute, SUS304 contact parts, CE certified. Watch it pack 500g rice bags in our test workshop."},
+  "mach-2": {"seller_id": "machinery", "text": "Another shipment on its way! An 8-station rotary pouch packing line with a 10-head combination weigher is heading to our customer in Saudi Arabia. Thank you for your trust!"},
+  "adh-1": {"seller_id": "adhesives", "text": "TS-PU300 polyurethane sealant for construction joints: 40-60 min skin time, Shore A 35, available in white, grey and black. REACH compliant."},
+  "adh-2": {"seller_id": "adhesives", "text": "Speed up your carton sealing line with TS-HM120 EVA hot melt pellets: 10-15 s open time, clean application, 25 kg bags."},
+  "tex-1": {"seller_id": "textiles", "text": "New season colors for our 3-layer softshell HV-SS3L: 10,000 mm waterproof, 8,000 g breathability, bluesign approved. Which color is your favorite?"},
+  "tex-2": {"seller_id": "textiles", "text": "Sustainability matters: our 150D Oxford fabric is made from 100% recycled PET bottles and is GRS certified. Perfect for bags and backpacks."},
+  "ene-1": {"seller_id": "energy", "text": "Installation done in Bavaria, Germany: two VM-W51 5.12 kWh LiFePO4 batteries with a VM-H6K 6 kW hybrid inverter. 6000 cycles, CE and IEC 62619 certified."},
+  "ene-2": {"seller_id": "energy", "text": "Weekend camping powered by the VM-P2 portable power station: 2048 Wh LiFePO4, 2200 W AC output. Coffee machine, fridge and lights all day long."}
+}

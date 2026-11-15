@@ -44,6 +44,9 @@
 | 自称经销商，想代理卖家的产品                 | `high`   | 他是买方渠道，属于合作意向                     |
 | "Interested"                               | `medium` | 没有要求动作                                   |
 | "Interested, please send details"          | `high`   | 要求发资料                                     |
+| "Please share the weight of this fabric"   | `medium` | 在评论区问规格，即使措辞是 please share         |
+| "Please send me the datasheet / samples"   | `high`   | 要求单独发送目录、规格书、样品                 |
+| 同行说「互相交流一下，加个微信」             | `spam`   | 不是买家；看他是想买还是想卖                   |
 | "Do you ship to Brazil?"                   | `medium` | 只问能力，没有数量和价格                       |
 | "Do you ship to Brazil? Need 500 units"    | `high`   | 有具体数量                                     |
 | @好友 "look at this"                       | `low`    | 可能有潜在价值，但评论本身没有动作             |
@@ -73,7 +76,7 @@
 
 所有回复都必须遵守：
 
-1. **语言与评论一致**；多语言混杂时，用占比最高的语言
+1. **语言与评论一致**；多语言混杂时，用占比最高的语言；纯表情等判断不了语言时（`language` 标为 `und`），用英语
 2. **规格只能来自产品目录**：目录里没有的型号、参数、认证，不能写；卖家没有对方问的产品时，如实说明
 3. **不做越权承诺**：不报具体价格或折扣，不保证交期，不承诺退款或赔偿（这些需要销售人工确认）
 4. **不超过平台字数上限**（见 `data/platforms.yaml`）
@@ -88,9 +91,9 @@
 | `id`         | 样本编号                                               |
 | `seller_id`  | 对应 `data/sellers/` 下的卖家                          |
 | `platform`   | linkedin / facebook / instagram / tiktok               |
-| `post_text`  | 卖家发的帖子内容                                       |
+| `post_id`    | 对应 `data/posts.json` 里的帖子                        |
 | `comment`    | 评论原文                                               |
-| `language`   | 评论的主要语言（ISO 639-1，如 `en`、`es`、`ar`）        |
+| `language`   | 评论的主要语言（ISO 639-1，如 `en`、`es`、`ar`）；判断不了标 `und` |
 | `label`      | 标准答案                                               |
 | `uncertain`  | 是否拿不准                                             |
 | `hard_type`  | 难例类型；普通样本为空。取值见下                       |
