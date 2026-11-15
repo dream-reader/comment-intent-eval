@@ -94,7 +94,11 @@ def probe() -> None:
         r, a = job
         sample = {"id": r["cid"], **{k: r[k] for k in ("seller_id", "platform", "post_id", "comment")}}
         res = agent.run(sample, attempt=a)
-        return r["cid"], (res.parsed or {}).get("label") or f"ERROR:{res.error or res.parse_error}"
+        if res.error:  # 接口或运行错误：基础设施问题，要重跑
+            return r["cid"], f"ERROR:{res.error}"
+        if res.parse_error:  # 输出不是合法 JSON：Agent 自身的失败，算有效探测结果
+            return r["cid"], "invalid"
+        return r["cid"], res.parsed["label"]
 
     with ThreadPoolExecutor(8) as pool:
         results = list(pool.map(run, jobs))
