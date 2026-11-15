@@ -1,0 +1,15 @@
+# 模型配置。DeepSeek 开放平台当前可用：deepseek-flash、deepseek-v4-pro（2026-11-15 经 /models 确认）
+# 注意：两个都是推理模型，completion token 先消耗在 reasoning 上，
+# max_tokens 太小会导致正文为空（实测 v4-pro 在 200 时 content 为空）。
+base_url_env: DEEPSEEK_BASE_URL
+api_key_env: DEEPSEEK_API_KEY
+
+agent:
+  model: deepseek-flash
+  max_tokens: 4000
+  temperature: 0.2
+
+judge:
+  model: deepseek-v4-pro
+  max_tokens: 8000
+  temperature: 0.0

@@ -1,0 +1,17 @@
+[project]
+name = "comment-intent-eval"
+version = "0.1.0"
+description = "外贸社媒评论意向分级 Agent 及其分层评测"
+requires-python = ">=3.11"
+dependencies = [
+  "openai>=1.40",
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "python-dotenv>=1.0",
+  "pandas>=2.2",
+  "scikit-learn>=1.5",
+  "scipy>=1.13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]

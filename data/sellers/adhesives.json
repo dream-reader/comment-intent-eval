@@ -1,0 +1,14 @@
+{
+  "seller_id": "adhesives",
+  "fictional": true,
+  "company": "Tessaline Industrial Adhesives",
+  "industry": "工业胶粘剂",
+  "ships_to": ["Worldwide except sanctioned regions"],
+  "payment_terms": ["T/T"],
+  "products": [
+    {"sku": "TS-PU300", "name": "Polyurethane Sealant", "specs": {"color": ["white", "grey", "black"], "packaging": "600ml sausage", "skin_time_min": "40-60", "shore_a_hardness": 35}, "certifications": ["REACH"], "moq_units": 2000},
+    {"sku": "TS-HM120", "name": "Hot Melt Adhesive Pellets (EVA)", "specs": {"softening_point_c": 95, "open_time_s": "10-15", "packaging": "25kg bag"}, "certifications": ["REACH", "RoHS"], "moq_units": 40},
+    {"sku": "TS-EP2", "name": "Two-Component Epoxy Structural Adhesive", "specs": {"mix_ratio": "1:1", "working_time_min": 30, "shear_strength_mpa": 25, "packaging": "50ml cartridge"}, "certifications": ["RoHS"], "moq_units": 1000}
+  ],
+  "unit_notes": "moq_units: TS-PU300 和 TS-EP2 按支计，TS-HM120 按袋计"
+}

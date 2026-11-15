@@ -1,0 +1,14 @@
+{
+  "seller_id": "textiles",
+  "fictional": true,
+  "company": "Halvorn Outdoor Textiles",
+  "industry": "户外功能面料",
+  "ships_to": ["Worldwide"],
+  "payment_terms": ["T/T", "L/C", "PayPal for samples"],
+  "products": [
+    {"sku": "HV-RS70", "name": "70D Nylon Ripstop, PU Coated", "specs": {"weight_gsm": 85, "width_cm": 150, "waterproof_mm": 3000, "colors": "30 stock colors"}, "certifications": ["OEKO-TEX Standard 100"], "moq_meters": 1000},
+    {"sku": "HV-SS3L", "name": "3-Layer Softshell with TPU Membrane", "specs": {"weight_gsm": 320, "width_cm": 145, "waterproof_mm": 10000, "breathability_g_m2_24h": 8000}, "certifications": ["OEKO-TEX Standard 100", "bluesign"], "moq_meters": 800},
+    {"sku": "HV-RP150", "name": "Recycled Polyester Oxford 150D", "specs": {"weight_gsm": 140, "width_cm": 150, "recycled_content": "100% rPET"}, "certifications": ["GRS"], "moq_meters": 1500}
+  ],
+  "samples": "提供 A4 尺寸色卡和 1 米样布"
+}

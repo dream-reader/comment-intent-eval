@@ -1,0 +1,13 @@
+{
+  "seller_id": "machinery",
+  "fictional": true,
+  "company": "Qorvex Packaging Machinery",
+  "industry": "包装机械",
+  "ships_to": ["Asia", "Middle East", "Africa", "South America", "Eastern Europe"],
+  "payment_terms": ["T/T", "L/C"],
+  "products": [
+    {"sku": "QV-VF420", "name": "Vertical Form Fill Seal Machine", "specs": {"bag_width_mm": "60-200", "speed_bags_per_min": "20-60", "power_kw": 3.5, "material": "SUS304 contact parts"}, "certifications": ["CE"], "moq_units": 1},
+    {"sku": "QV-RT8", "name": "Rotary Premade Pouch Packing Machine", "specs": {"stations": 8, "pouch_width_mm": "100-250", "speed_pouches_per_min": "up to 45", "power_kw": 4.2}, "certifications": ["CE"], "moq_units": 1},
+    {"sku": "QV-CW10", "name": "Multihead Combination Weigher", "specs": {"heads": 10, "weighing_range_g": "10-1000", "accuracy_g": "±0.5-1.5"}, "certifications": ["CE"], "moq_units": 1}
+  ]
+}

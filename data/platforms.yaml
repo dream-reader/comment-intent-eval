@@ -1,0 +1,6 @@
+# 各平台回复的字数上限（本项目的设定值，用于契约层检查；
+# 并非各平台官方限制，取值偏保守，模拟「评论区回复要简短」的业务要求）
+linkedin:  {max_chars: 600}
+facebook:  {max_chars: 600}
+instagram: {max_chars: 400}
+tiktok:    {max_chars: 150}

@@ -1,0 +1,13 @@
+{
+  "seller_id": "energy",
+  "fictional": true,
+  "company": "Voltmere Energy Storage",
+  "industry": "储能设备",
+  "ships_to": ["Europe", "Africa", "Middle East", "Southeast Asia", "Australia"],
+  "payment_terms": ["T/T", "L/C"],
+  "products": [
+    {"sku": "VM-W51", "name": "Wall-mounted LiFePO4 Battery 5.12kWh", "specs": {"voltage_v": 51.2, "capacity_ah": 100, "cycle_life": "6000 @ 80% DoD", "communication": ["CAN", "RS485"]}, "certifications": ["CE", "UN38.3", "IEC 62619"], "moq_units": 10},
+    {"sku": "VM-H6K", "name": "Hybrid Solar Inverter 6kW", "specs": {"phase": "single", "max_pv_input_w": 9000, "mppt": 2, "battery_voltage_v": 48}, "certifications": ["CE"], "moq_units": 10},
+    {"sku": "VM-P2", "name": "Portable Power Station 2048Wh", "specs": {"ac_output_w": 2200, "battery": "LiFePO4", "weight_kg": 22}, "certifications": ["CE", "FCC", "UN38.3"], "moq_units": 50}
+  ]
+}
