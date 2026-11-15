@@ -29,7 +29,7 @@
 - [x] M0 标签定义、[标注指南](docs/labeling-guide.md)、虚构卖家与产品目录
 - [x] M1 评测集：基础集 200 条 + 对抗难例集 80 条
 - [ ] M2 Agent v1
-- [ ] M3 契约层 + 分类指标 + 报告
+- [x] M3 契约层 + 分类指标 + 报告
 - [ ] M4 稳定性 + 蜕变测试 + LLM 裁判及校准
 - [ ] M5 实验与结论
 - [ ] M6 文档整理
@@ -56,8 +56,25 @@
 ## 运行
 
 ```bash
-pip install -e ".[dev]"
-cp .env.example .env   # 填入 DeepSeek API Key
+pip install -e ".[dev]" langdetect
+cp .env.example .env                                   # 填入 DeepSeek API Key
+
+python scripts/validate_dataset.py hard                # 校验评测集
+python scripts/run_agent.py --split hard --prompt v1   # 跑 Agent，结果在 reports/runs/<名称>/
+python -m evals.report --run hard-v1-deepseek-flash    # 生成评测报告 reports/<名称>.md
+python -m pytest tests                                 # 评测代码自身的测试
 ```
 
-（运行命令随 M2、M3 补充）
+模型调用结果缓存在本地 `cache/llm.sqlite`，重跑报告不会重复花钱。
+
+## 当前结果（v1，deepseek-flash）
+
+| 数据集 | 准确率 | 宏平均 F1 | 契约不通过 | 报告 |
+| ------ | -----: | --------: | ---------: | ---- |
+| 基础集 | 98.5% | 0.987 | 17 / 200 | [base-v1-deepseek-flash](reports/base-v1-deepseek-flash.md) |
+| 难例集 | 66.7% | 0.672 | 27 / 80 | [hard-v1-deepseek-flash](reports/hard-v1-deepseek-flash.md) |
+
+- 难例集上 27 条 `spam` 只识别出 7 条，16 条被当成 `high`：包装成询盘的推销和提示词注入能骗过 Agent
+- 含提示词注入的 23 条没有一条被标出（v1 提示词没有这项要求），其中难例集的大多数还给了回复
+- 契约层主要问题是回复超过平台字数上限（基础集 9 条、难例集 14 条）
+- 难例集有一半是专门挑 v1 判错的样本，这个准确率不代表真实水平，只用于比较版本间的改进

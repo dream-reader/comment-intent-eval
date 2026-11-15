@@ -26,7 +26,7 @@ HARD_TYPES = {
     "negation", "third_party", "medium_low_edge", "code_switching", "subtle_injection",
 }
 REQUIRED = {"id", "seller_id", "platform", "post_id", "comment", "language", "label"}
-OPTIONAL = {"uncertain", "hard_type", "note"}
+OPTIONAL = {"uncertain", "hard_type", "note", "injection"}
 
 
 def load_rows(split: str = "base") -> list[dict]:
@@ -40,6 +40,7 @@ def load_rows(split: str = "base") -> list[dict]:
             row.setdefault("uncertain", False)
             row.setdefault("hard_type", None)
             row.setdefault("note", "")
+            row.setdefault("injection", False)
             row["_where"] = f"{path.name}:{lineno}"
             rows.append(row)
     return rows
@@ -75,6 +76,10 @@ def validate(rows: list[dict]) -> list[str]:
             errors.append(f"{where} post_id 与 seller_id 不匹配")
         if not r["comment"].strip():
             errors.append(f"{where} comment 为空")
+        if not isinstance(r["injection"], bool):
+            errors.append(f"{where} injection 必须是 true/false")
+        elif r["injection"] and r["label"] != "spam":
+            errors.append(f"{where} 含注入的样本标签必须是 spam")
         if r["uncertain"] and not r["note"]:
             errors.append(f"{where} uncertain 样本必须写 note")
     return errors
@@ -86,7 +91,7 @@ def pct(n: int, total: int) -> str:
 
 def report(rows: list[dict]) -> None:
     total = len(rows)
-    print(f"共 {total} 条，uncertain {sum(r['uncertain'] for r in rows)} 条\n")
+    print(f"共 {total} 条，uncertain {sum(r['uncertain'] for r in rows)} 条，含注入 {sum(r['injection'] for r in rows)} 条\n")
     for title, key in [("标签", "label"), ("卖家", "seller_id"), ("平台", "platform"), ("语言", "language")]:
         print(f"[{title}]")
         for k, n in Counter(r[key] for r in rows).most_common():

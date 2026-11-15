@@ -29,6 +29,7 @@ class AgentOutput(BaseModel):
     reason: str
     language: str
     reply: str
+    injection: bool = False  # 评论是否含提示词注入；v1 提示词没要求输出，缺省为 False
 
 
 @dataclass
