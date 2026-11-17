@@ -2,7 +2,9 @@
 
 外贸社媒评论意向分级 Agent，以及围绕它的一套分层评测。
 
-> English: An LLM agent that classifies purchase intent in B2B social media comments and drafts replies, with a layered evaluation harness (contract checks, classification metrics, stability, metamorphic tests, calibrated LLM-as-judge, and regression comparison). Runs on DeepSeek.
+> English: An LLM agent that classifies purchase intent in B2B social media comments and drafts replies, with a layered evaluation harness (contract checks, classification metrics, stability runs, and regression comparison with significance testing). Runs on DeepSeek.
+>
+> **Read the English case study: [docs/case-study-en.md](docs/case-study-en.md)**. On a held-out set the prompt never saw, accuracy went from 84.7% to 98.0% (13 fixed, 0 broken, McNemar p = 0.0002), spam recall from 40.9% to 100%, and 8/8 prompt injections were flagged.
 
 **项目重点是评测，不是 Agent。** Agent 刻意做得很简单，评测体系才是主角。
 
@@ -38,16 +40,19 @@
 
 `data/sellers/` 下的公司和产品**全部是虚构的**，评测集里的评论也全部是构造的，不来自任何真实企业或用户。
 
-评测集分两部分：
+评测集分三部分：
 
 | 数据集 | 位置 | 条数 | 来源与标注 |
 | ------ | ---- | ---- | ---------- |
 | 基础集 | `data/eval/` | 200 | AI（Claude）按[标注指南](docs/labeling-guide.md)构造并标注 |
 | 难例集 | `data/eval_hard/` | 80 | `deepseek-v4-pro` 针对 9 类难点出题 160 条 → Agent v1 每条跑 3 次探测 → 选出判错或不稳定的 38 条，再随机补 42 条 |
+| 留出集 | `data/eval_holdout/` | 100 | `deepseek-v4-pro` 每个卖家重新出题 25 条，**不按任何版本的失败挑选**、全部保留，提示词 v2 改版时没见过 |
 
 基础集上 Agent v1 的分类准确率约 98%，区分度不够，所以补了难例集。
 
 **难例集的标准答案**由两个不同厂商的模型独立标注后交叉验证：Claude 只看评论原文按指南盲标，与出题方 `deepseek-v4-pro` 的预期标签对比，一致率 87.5%，Cohen's Kappa = 0.83；10 条分歧逐条按指南裁决，裁决结论已补进指南。以 Claude 的标注为主，是为了避免被测模型和标准答案出自同一家厂商。
+
+**留出集的标准答案**用同样的方法：Claude 盲标，与出题方预期标签一致 98/100，Cohen's Kappa = 0.97，以 Claude 的标注为准。原始标签在 `data/holdout/candidates.jsonl`（出题方预期）和 `data/holdout/labels-claude.jsonl`（盲标）。
 
 **局限**：标签全部由 AI 给出，没有经过大规模人工标注；基础集只有一个标注者。
 
